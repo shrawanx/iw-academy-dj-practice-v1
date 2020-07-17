@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<h1>This is my profile</h1>
+Click <a href="/accounts/logout/">here</a> to logout <br><br>
+Click <a href="{% url 'statusapp:create' %}">here</a> to create status message <br><br>
+Name: {{ request.user.get_full_name }} <br>
+Email: {{ request.user.email }} <br>
+Username: {{ request.user.username }} <br><br>
+
+Bio: {{ request.user.get_bio }}
+<hr>
+{% for msg in messages %}
+    Status: <b>{{ msg.status }}</b>
+    User: <b>{{ msg.user.username }}</b>
+    Created At: <b>{{ msg.created_at }}</b>
+
+    {% if msg.user == request.user %}
+        <a href="{% url 'statusapp:delete' msg.id %}">Delete</a>
+    {% endif %}
+    <hr>
+{% endfor %}
+</body>
+</html>

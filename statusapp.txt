@@ -1,0 +1,13 @@
+
+
+
+1. user can upload their status message
+2. user can only see their own status message
+3. user can update or delete their status message
+
+Hints:
+    start a new app names: statusapp
+    Create a new model
+    class Model:
+        status: CharField
+        user: FK relation
