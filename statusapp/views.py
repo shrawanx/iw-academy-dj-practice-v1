@@ -25,7 +25,7 @@ class StatusMessageCreateView(CreateView):
 
 
 class StatusMessageDeleteView(DeleteView):
-    model = StatusMessageModelForm
+    model = StatusMessageModelForm.Meta.model
     success_url = '/accounts/profile/'
 
     def get_queryset(self):
