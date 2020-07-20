@@ -1,0 +1,80 @@
+1. User Management [profile]
+2. Photo management system
+    [Uploads image, comments, likes]
+    [can upload private or public photos]
+3. User can follow other user, and Block User, search User
+4. [Home] User can view every photos from user they follow
+5. Messaging App
+
+
+1.1 User Model
+1.2 User Registration
+    - User Account Activation [send activation email]
+1.3 User Account Reset
+    - Send an OTP, or One time link to the email and
+      allow user to reset the password
+1.4 Login Page
+1.5 Profile Page
+    Edit Profile, Add profile pictures, Block list
+
+    class User(AbstractUser):
+        .......
+    # settings.py --> AUTH_USER_MODEL = ''
+
+    class Profile(Models):
+        ...........
+        user = FK(USER)
+
+2.1 Photo Management System modeling
+    class Photo:
+        title, image,
+        created_by =  FK(User),
+        created_at,
+        modified_at,
+        visibility (Public,Private)
+
+    Class Comment:
+        photo = FK(Photo,models.CASCADE)
+        body = CharField or TextField
+        commented_by = FK(User)
+        created_at
+
+    class Like:
+        photo = FK(Photo,models.CASCADE)
+        liked_by = FK(User)
+        created_at
+
+2.2 Photo CRUD
+2.3 Comment form and Like and Unlike
+
+3.1 class Friend:
+        user1 = FK(User)
+        user2 = FK(User)
+        status = [Pending, Accepted,Reject]
+        created_at
+
+    class BlockList:
+        blocked_by = FK(User)
+        blocked = FK(User)
+        created_at
+
+4.1  Create View:
+     -> Find out everyone you follow [user_list]
+     -> Get all photos[public,private] from users list that i follow
+     -> and
+     -> get all public [trending] photos
+        -> but exclude the blocklist user
+     -> template loop
+4.2 comment section, like section, unlike section for ever photo
+
+5.1  Class Message:
+        sent_by = FK(User)
+        sent_to = FK(User)
+        msg = CharField/TextField
+        created_at
+
+     logged in user: Shyam
+        example.com/profile/ram
+        -> profile--> message, follow, block
+        -> click on msg=: example.com/profile/ram/messages/
+
