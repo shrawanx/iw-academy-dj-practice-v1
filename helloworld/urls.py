@@ -46,6 +46,7 @@ urlpatterns = [
     path('statusapp/', include('statusapp.urls', namespace='statusapp')),
 
     path('accounts/', include('accounts.urls')),
+    path('rest/', include('rest.urls')),
 
     path('admin/', admin.site.urls),
 
