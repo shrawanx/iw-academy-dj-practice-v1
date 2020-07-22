@@ -62,9 +62,15 @@ def signup_view(request):
             user.save()
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect('/accounts/login/')
+
+            logout(request)
+            login(request, user)
+
+            return redirect('/accounts/profile/')
 
     elif request.method == 'GET':
+        # if request.user.is_authenticated:
+        #     return redirect('/accounts/profile/')
         form = SignUpForm()
 
     return render(request, 'accounts/signup.html', {'form': form})
