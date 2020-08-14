@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django_extensions',
 
     'rest',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/kathmandu'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

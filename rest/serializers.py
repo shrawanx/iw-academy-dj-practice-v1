@@ -41,9 +41,19 @@ class InfoModelSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Length of name should be greater than 1")
         return name
 
-    def validate(self, data):
-        name = data['name']
-        address = data['address']
-        if name == address:
-            raise serializers.ValidationError("name and address cannot be same")
-        return data
+    # def validate(self, data):
+    #     name = data['name']
+    #     address = data['address']
+    #     if name == address:
+    #         raise serializers.ValidationError("name and address cannot be same")
+    #     return data
+
+
+class SignUpSerializer(serializers.Serializer):
+    first_name = serializers.CharField(max_length=20)
+    middle_name = serializers.CharField(max_length=20)
+    last_name = serializers.CharField(max_length=20)
+    username = serializers.CharField(max_length=20)
+    password = serializers.CharField(max_length=20)
+    is_staff = serializers.BooleanField(default=False)
+
